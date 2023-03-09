@@ -76,13 +76,24 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if form is submitted
+$conn->select_db($dbname);
+$createtb = "CREATE TABLE IF NOT EXISTS Post (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  post_title VARCHAR(100),
+  post_description TEXT)";
+
+
+if ($conn->query($createtb) === TRUE) {
+  // echo "Table created successfully";
+} else {
+  echo "Error creating table: " . $conn->error;
+}
+
 if (isset($_POST['submit'])) {
     // Get form data
     $post_title = $conn->real_escape_string($_POST['Post_title']);
     $post_description = $conn->real_escape_string($_POST['Post_description']);
 
-    // Insert data into database
     $sql = "INSERT INTO Post (post_title, post_description) VALUES ('$post_title', '$post_description')";
     if ($conn->query($sql) === TRUE) {
         header("Location: /mysqlAssi/view.php ");
