@@ -54,10 +54,10 @@ input[type=submit]:hover {
   <form action="" method="POST">
 
     <label for="fname">Post Title</label>
-    <input type="text" id="fname" name="Post_title" placeholder="Post Title...">
+    <input type="text" id="fname" name="Post_title" placeholder="Post Title..." required>
 
     <label for="subject">Post Description</label>
-    <textarea id="subject" name="Post_description" placeholder="Post Description..." style="height:200px"></textarea>
+    <textarea id="subject" name="Post_description" placeholder="Post Description..." required style="height:200px"></textarea>
 
     <input  type="submit" name="submit" value="Submit">
   </form>
