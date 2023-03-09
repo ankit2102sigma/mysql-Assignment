@@ -51,7 +51,7 @@ input[type=submit]:hover {
   <div class="main">
   <h1 style="text-align: center;">Enter Table Data</h1>
 <div class="container">
-  <form action="insert.php" method="POST">
+  <form action="" method="POST">
 
     <label for="fname">Post Title</label>
     <input type="text" id="fname" name="Post_title" placeholder="Post Title...">
@@ -96,7 +96,7 @@ if (isset($_POST['submit'])) {
 
     $sql = "INSERT INTO Post (post_title, post_description) VALUES ('$post_title', '$post_description')";
     if ($conn->query($sql) === TRUE) {
-        header("Location: /mysqlAssi/view.php ");
+        header("Location: view.php ");
         exit;
     } else {
         echo "Error inserting data: " . $conn->error;

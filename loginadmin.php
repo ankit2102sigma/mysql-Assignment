@@ -30,7 +30,7 @@ include_once 'db-connection.php';
   if (checkusername($result, $username)) {
     if (checkpassword($result, $password)) {
       echo "<p>Valid Credentials</p>";
-      header("Location: insert.php/");
+      header("Location: insert.php");
         die();
     } else {
       echo "<p>Invalid Password</p>";
