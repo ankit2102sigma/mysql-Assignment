@@ -26,7 +26,6 @@ $dbname = "formvalid3";
     post_description TEXT)";
 
 if ($conn->query($createtb) === TRUE) {
-  // echo "Table created successfully";
 } else {
   echo "Error creating table: " . $conn->error;
 }

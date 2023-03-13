@@ -58,12 +58,12 @@ if (checkusername($rows, $username)) {
         header("Location: insert.php");
         die();
     } else {
-      echo '<script>alert("Invalid password"); window.location.href = "login.php";</script>';
+      echo '<script>alert("Invalid password"); window.location.href = "index.php";</script>';
       exit;
   
     }
 } else {
-  echo '<script>alert("Invalid Username"); window.location.href = "login.php";</script>';
+  echo '<script>alert("Invalid Username"); window.location.href = "index.php";</script>';
   exit;
 
 }

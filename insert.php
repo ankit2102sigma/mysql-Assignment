@@ -64,31 +64,16 @@ input[type=submit]:hover {
   
   
   <?php
-// Database credentials
-// $servername = "localhost";
-// $username = "admin";
-// $password = "admin";
-// $dbname = "formvalid3";
 
-// Connect to database
 include  'db-connection.php';
-
-// $conn->select_db($dbname);
-// $createtb = "CREATE TABLE IF NOT EXISTS Post (
-//   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-//   post_title VARCHAR(100),
-//   post_description TEXT)";
-
-
-// if ($conn->query($createtb) === TRUE) {
-//   // echo "Table created successfully";
-// } else {
-//   echo "Error creating table: " . $conn->error;
-// }
 
 if (isset($_POST['submit'])) {
     // Get form data
     $post_title = $conn->real_escape_string($_POST['Post_title']);
+    if (!(preg_match('/^[a-zA-Z0-9 ]{1,30}$/', $post_title))) {
+      echo '<script>alert("Invlalid Post Title"); window.location.href = "insert.php";</script>';
+      exit;
+    }
     $post_description = $conn->real_escape_string($_POST['Post_description']);
 
     $sql = "INSERT INTO Post (post_title, post_description) VALUES ('$post_title', '$post_description')";
@@ -100,7 +85,6 @@ if (isset($_POST['submit'])) {
     }
 }
 
-// $conn->close();
 ?>
 
 </div>

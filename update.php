@@ -4,6 +4,10 @@
     if(isset($_POST['update'])){
         $id=$_POST['id'];
         $post_title=$_POST['post_title'];
+        if (!(preg_match('/^[a-zA-Z0-9 ]{1,30}$/', $post_title))) {
+          echo '<script>alert("Invlalid Post Title"); window.location.href = "update.php";</script>';
+          exit;
+        }
         $post_description=$_POST['post_description'];
         mysqli_query($conn,"update Post set post_title='$post_title', post_description='$post_description' where id='$id'");
         header('location:view.php');

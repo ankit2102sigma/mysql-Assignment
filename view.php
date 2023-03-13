@@ -58,10 +58,7 @@
 <body>
 
 <?php
-//  $con = mysqli_connect("localhost", "admin", "admin", "formvalid3");
-// if (!$con) {  
-//     die('not connected');
-// }
+
 include  'db-connection.php';
 
 $result = mysqli_query($conn, "select * from Post");
@@ -89,9 +86,9 @@ $result = mysqli_query($conn, "select * from Post");
             <a href="update.php?id=<?php echo $row['id']; ?>">
                 <i class="fa fa-pencil" title='Edit'></i> 
             </a>
-            <a href="delete.php?id=<?php echo $row['id']; ?>">
-                <i class="fa fa-trash title='delete'"></i> 
-            </a>
+            <a href="delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure you want to delete this row?');">
+    <i class="fa fa-trash" title="delete"></i>
+</a>
             </td>
             </tr>
             <?php
