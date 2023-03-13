@@ -1,5 +1,24 @@
 <?php
-include_once 'db-connection.php';
+
+$servername = "localhost";
+$username = "admin";
+$password = "admin";
+$dbname = "formvalid3";
+
+
+  $conn = new mysqli($servername, $username, $password);
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+
+  //creating database if exist
+  $createdb = "CREATE DATABASE IF NOT EXISTS $dbname";
+
+  if ($conn->query($createdb) === TRUE) {
+    // echo "Database created successfully";
+  } else {
+    echo "Error creating database: " . $conn->error;
+  }
 
 $conn->select_db($dbname);
 $createtb = "CREATE TABLE IF NOT EXISTS admininfo (
@@ -11,16 +30,18 @@ if ($conn->query($createtb) === TRUE) {
     echo "Table created successfully";
 } else {
     echo "Error creating table: " . $conn->error;
-}
+} 
+
+$inserted = true ;
 
 //inserting database
-$inserttb = "INSERT INTO admininfo(username, password) VALUES ('ankit', 'arora')";
 $inserttb = "INSERT INTO admininfo(username, password) VALUES ('admin', 'admin')";
 if ($conn->query($inserttb) === TRUE) {
     echo "Data inserted into table";
 } else {
     echo "Error inserting data: " . $conn->error;
 }
+
 
 $username = $_POST["username"];
 $password = $_POST["password"];
@@ -37,10 +58,14 @@ if (checkusername($rows, $username)) {
         header("Location: insert.php");
         die();
     } else {
-        echo "<p>Invalid Password</p>";
+      echo '<script>alert("Invalid password"); window.location.href = "login.php";</script>';
+      exit;
+  
     }
 } else {
-    echo "<p>Invalid Username</p>";
+  echo '<script>alert("Invalid Username"); window.location.href = "login.php";</script>';
+  exit;
+
 }
 
 $conn->close();

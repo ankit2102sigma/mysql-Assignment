@@ -1,17 +1,15 @@
 <?php
-    $con = mysqli_connect("localhost", "admin", "admin", "formvalid3");
-    if (!$con) {
-        die('not connected');
-    }
+  include 'db-connection.php';
+
     if(isset($_POST['update'])){
         $id=$_POST['id'];
         $post_title=$_POST['post_title'];
         $post_description=$_POST['post_description'];
-        mysqli_query($con,"update Post set post_title='$post_title', post_description='$post_description' where id='$id'");
+        mysqli_query($conn,"update Post set post_title='$post_title', post_description='$post_description' where id='$id'");
         header('location:view.php');
     }
     $id=$_GET['id'];
-    $result=mysqli_query($con,"select * from Post where id='$id'");
+    $result=mysqli_query($conn,"select * from Post where id='$id'");
     $row=mysqli_fetch_array($result);
     ?>
     <!DOCTYPE html>

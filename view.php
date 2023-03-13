@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link 
+  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
+  rel="stylesheet"  type='text/css'>
     <style>
              label {
       display: inline-block;
@@ -55,11 +58,13 @@
 <body>
 
 <?php
- $con = mysqli_connect("localhost", "admin", "admin", "formvalid3");
-if (!$con) {  
-    die('not connected');
-}
-$result = mysqli_query($con, "select * from Post");
+//  $con = mysqli_connect("localhost", "admin", "admin", "formvalid3");
+// if (!$con) {  
+//     die('not connected');
+// }
+include  'db-connection.php';
+
+$result = mysqli_query($conn, "select * from Post");
 ?>
 <div>
     <h1> View Data</h1>
@@ -82,10 +87,10 @@ $result = mysqli_query($con, "select * from Post");
             <td><?php echo $row['post_description']; ?></td>
             <td>
             <a href="update.php?id=<?php echo $row['id']; ?>">
-                <i class="fa fa-pencil"></i> Edit
+                <i class="fa fa-pencil" title='Edit'></i> 
             </a>
             <a href="delete.php?id=<?php echo $row['id']; ?>">
-                <i class="fa fa-trash"></i> Delete
+                <i class="fa fa-trash title='delete'"></i> 
             </a>
             </td>
             </tr>

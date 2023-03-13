@@ -1,9 +1,7 @@
 <?php
-    $con = mysqli_connect("localhost", "admin", "admin", "formvalid3");
-    if (!$con) {
-        die('not connected');
-    }
+    include_once 'db-connection.php';
+
     $id=$_GET['id'];
-    mysqli_query($con,"delete from Post where id='$id'");
+    mysqli_query($conn,"delete from Post where id='$id'");
     header('location:view.php');
     ?>
