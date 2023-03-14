@@ -26,6 +26,9 @@
     th, td {
       text-align: left;
       padding: 8px;
+      max-width: 500px;
+      word-break: break-all;
+
     }
     th {
       background-color: #4CAF50;
